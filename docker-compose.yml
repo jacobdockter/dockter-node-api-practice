@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_PASSWORD}
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - ${MONGO_DB_ADMIN_PORT}:${MONGO_DB_ADMIN_PORT}
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_DB_ADMIN_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_DB_ADMIN_PASSWORD}
+      ME_CONFIG_MONGODB_URL: ${MONGO_DB_ADMIN_URL}
+  node-server:
+    build: .
+    restart: always
+    ports:
+      - ${MONGO_DB_PORT}:${MONGO_DB_PORT}
+    environment:
+      MONGO_USERNAME: ${MONGO_DB_USERNAME}
+      MONGO_PASSWORD: ${MONGO_DB_PASSWORD}
+      MONGO_HOST: ${MONGO_DB_HOST}
+      MONGO_PORT: ${MONGO_DB_PORT}

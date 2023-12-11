@@ -1,0 +1,32 @@
+{
+  "name": "transaction-experiment",
+  "version": "1.0.0",
+  "description": "Expirement for practicing typescript, node, and nosql.",
+  "main": "src/app.ts",
+  "scripts": {
+    "serve": "nodemon source/app.ts",
+    "build": "rm -rf build/ && prettier --write source/ && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "jacobdockter",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2"
+  }
+}
