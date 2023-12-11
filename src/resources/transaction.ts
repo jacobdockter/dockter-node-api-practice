@@ -36,8 +36,10 @@ const createTransaction = async (req: Request, res: Response, next: NextFunction
         const transaction = req.body as Transaction
         const result = await collections.transactions?.insertOne(transaction)
 
-        return res.status(200).json({
+        return result ? res.status(201).json({
             message: result
+        }) : res.status(400).json({
+            message: "Error creating transaction."
         })
     } catch (error) {
         let message = formatError(error)
