@@ -8,7 +8,7 @@ Create a .env
 
 ```text
 # MONGO DB ADMIN PORTAL
-MONGO_DB_ADMIN_URL="mongodb://root:example@mongo:27017/"
+MONGO_DB_ADMIN_URL="mongodb://admin:admin@localhost:27017/"
 MONGO_DB_ADMIN_PORT="8081"
 MONGO_DB_ADMIN_USERNAME="admin"
 MONGO_DB_ADMIN_PASSWORD="admin"
