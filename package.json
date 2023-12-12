@@ -4,8 +4,8 @@
   "description": "Expirement for practicing typescript, node, and nosql.",
   "main": "src/app.ts",
   "scripts": {
-    "serve": "nodemon source/app.ts",
-    "build": "rm -rf build/ && prettier --write source/ && tsc",
+    "serve": "nodemon src/app.ts",
+    "build": "rm -rf build/ && prettier --write src/ && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

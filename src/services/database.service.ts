@@ -9,7 +9,7 @@ export const collections: {
 
 export async function connectToDatabase () {
     dotenv.config();
-    const connectionString: string = process.env.MONGO_DB_CONNECTION_STRING || 'mongodb+srv://root:admin@localhost'
+    const connectionString: string = process.env.MONGO_DB_CONNECTION_STRING || 'mongodb://root:admin@mongodb:27017/'
     const client: mongoDB.MongoClient = new mongoDB.MongoClient(connectionString)
 
     await client.connect()

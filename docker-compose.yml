@@ -7,9 +7,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_PASSWORD}
+    ports:
+      - ${MONGO_DB_PORT}:${MONGO_DB_PORT}
   mongo-express:
     image: mongo-express
     restart: always
+    depends_on:
+      - mongo
     ports:
       - ${MONGO_DB_ADMIN_PORT}:${MONGO_DB_ADMIN_PORT}
     environment:
@@ -19,10 +23,7 @@ services:
   node-server:
     build: .
     restart: always
+    depends_on:
+      - mongo
     ports:
-      - ${MONGO_DB_PORT}:${MONGO_DB_PORT}
-    environment:
-      MONGO_USERNAME: ${MONGO_DB_USERNAME}
-      MONGO_PASSWORD: ${MONGO_DB_PASSWORD}
-      MONGO_HOST: ${MONGO_DB_HOST}
-      MONGO_PORT: ${MONGO_DB_PORT}
+      - ${NODE_SERVER_PORT}:${NODE_SERVER_PORT}
