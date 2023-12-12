@@ -11,10 +11,12 @@ router.get('/transactions', transactionResource.getTransactions)
 router.get('/transactions/:transactionId', transactionResource.getTransaction)
 
 /** budget routes */
+router.post('/budgets', budgetResource.createBudget)
 router.get('/budgets', budgetResource.getBudgets)
 router.get('/budgets/:budgetId', budgetResource.getBudget)
 
 /** user routes */
+router.post('/users', userResource.createUser)
 router.get('/users', userResource.getUsers)
 router.get('/users/:userId', userResource.getUser)
 

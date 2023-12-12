@@ -31,4 +31,18 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
-export default { getUser, getUsers }
+const createUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = req.body as User
+        const result = await collections.users?.insertOne(user)
+
+        return res.status(200).json({
+            message: result
+        })
+    } catch (error) {
+        let message = formatError(error)
+        return res.status(500).json({ message: message })
+    }
+}
+
+export default { getUser, getUsers, createUser }

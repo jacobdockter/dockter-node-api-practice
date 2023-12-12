@@ -31,4 +31,18 @@ const getBudget = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
-export default { getBudget, getBudgets }
+const createBudget = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const budget = req.body as Budget
+        const result = await collections.budgets?.insertOne(budget)
+
+        return res.status(200).json({
+            message: result
+        })
+    } catch (error) {
+        let message = formatError(error)
+        return res.status(500).json({ message: message })
+    }
+}
+
+export default { getBudget, getBudgets, createBudget }
