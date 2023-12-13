@@ -8,16 +8,17 @@ Create a .env
 
 ```text
 # MONGO DB ADMIN PORTAL
-MONGO_DB_ADMIN_URL="mongodb://admin:admin@mongodb:27017/"
+MONGO_DB_ADMIN_URL="mongodb://admin:admin@localhost:27017/"
 MONGO_DB_ADMIN_PORT="8081"
 MONGO_DB_ADMIN_USERNAME="admin"
 MONGO_DB_ADMIN_PASSWORD="admin"
 
 # MONGO DB
+MONGO_DB_NAME="budget-tracker"
 MONGO_DB_PORT="27017"
 MONGO_DB_USERNAME="root"
 MONGO_DB_PASSWORD="admin"
-MONGO_DB_CONNECTION_STRING="mongodb://root:admin@mongodb:27017/"
+MONGO_DB_CONNECTION_STRING="mongodb://root:admin@mongo:27017/"
 
 # MONGO DB COLLECTIONS
 TRANSACTIONS_COLLECTION_NAME="transactions"
@@ -28,16 +29,16 @@ USERS_COLLECTION_NAME="users"
 NODE_SERVER_PORT="3000"
 ```
 
+Note: the 'mongo' in the connection string refers to the docker container name. If that container name is changed,  
+update the connection string to reflect that.
+
+Note: The admin portal must be '@localhost', since it resides in the same docker container to be able to communicate.
+
+Lastly, run `docker compose up -d`. If making changes, `docker compose up -d --build --remove-orphans`.
+
 ## TODOs
 
 - study nosql db practices/design
-- node api running in typescript
-- extract passwords from docker compose
-- api running via docker
-- mongodb created and running via docker
-- api and mongodb connected
-- scripts for creating table and default records
 - scripts for inserting records
-- transactions endpoint
-- budget endpoint
 - unit tests
+- document/comment
