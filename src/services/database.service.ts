@@ -9,12 +9,12 @@ export const collections: {
 
 export async function connectToDatabase () {
     dotenv.config();
-    const connectionString: string = process.env.MONGO_DB_CONNECTION_STRING || 'mongodb://root:admin@mongodb:27017/'
+    const connectionString: string = process.env.MONGO_DB_CONNECTION_STRING || 'mongodb://root:admin@mongo:27017/'
     const client: mongoDB.MongoClient = new mongoDB.MongoClient(connectionString)
 
     await client.connect()
 
-    const db: mongoDB.Db = client.db(process.env.DB_NAME)
+    const db: mongoDB.Db = client.db(process.env.MONGO_DB_NAME || 'budget-tracker')
 
     const transactionsCollectionName: string = process.env.TRANSACTIONS_COLLECTION_NAME || 'transactions'
     const transactionsCollection: mongoDB.Collection = db.collection(transactionsCollectionName)
