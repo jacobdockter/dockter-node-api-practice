@@ -41,4 +41,5 @@ Lastly, run `docker compose up -d`. If making changes, `docker compose up -d --b
 - study nosql db practices/design
 - scripts for inserting records
 - unit tests
+- postman/thunderclient collections
 - document/comment
